@@ -13,3 +13,27 @@ D:\!FTN\!HCI VEZBE\2023-24\PZ2\Visual Studio\NetworkService\NetworkService\Netwo
 D:\!FTN\!HCI VEZBE\2023-24\PZ2\Visual Studio\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.csproj.CoreCompileInputs.cache
 D:\!FTN\!HCI VEZBE\2023-24\PZ2\Visual Studio\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.exe
 D:\!FTN\!HCI VEZBE\2023-24\PZ2\Visual Studio\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.pdb
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\bin\Debug\NetworkService.exe.config
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\bin\Debug\NetworkService.exe
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\bin\Debug\NetworkService.pdb
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.csproj.AssemblyReference.cache
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.exe.config
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\MainWindow.g.cs
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\Views\MeasurementGraphView.g.cs
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\Views\NetworkDisplayView.g.cs
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\Views\NetworkEntitiesView.g.cs
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\App.g.cs
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService_MarkupCompile.cache
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService_MarkupCompile.lref
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\MainWindow.baml
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\Views\MeasurementGraphView.baml
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\Views\NetworkDisplayView.baml
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\Views\NetworkEntitiesView.baml
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.g.resources
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.Properties.Resources.resources
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.csproj.GenerateResource.cache
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.csproj.CoreCompileInputs.cache
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.exe
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.pdb
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\App.baml

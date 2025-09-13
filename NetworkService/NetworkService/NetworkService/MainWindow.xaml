@@ -4,9 +4,130 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NetworkService"
+        xmlns:views="clr-namespace:NetworkService.Views"
+        xmlns:viewModels="clr-namespace:NetworkService.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Simulator of infrastructure system" Height="800" Width="1400"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="{StaticResource UISecondaryColor}">
+    <Window.DataContext>
+        <viewModels:MainWindowViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewModels:NetworkEntitiesViewModel}">
+            <views:NetworkEntitiesView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModels:NetworkDisplayViewModel}">
+            <views:NetworkDisplayView/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewModels:MeasurementGraphViewModel}">
+            <views:MeasurementGraphView/>
+        </DataTemplate>
+    </Window.Resources>
+
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock
+            Foreground="{StaticResource TextColor}"
+            Text="Network Display"
+            FontWeight="Bold"
+            FontSize="24"
+            FontFamily="Calibri"
+            HorizontalAlignment="Center"
+            Margin="0 66 0 10"/>
+        <ContentControl
+            Grid.Row="1"
+            Content="{Binding AlwaysOnViewModel}"/>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <DockPanel
+                Grid.Row="0"
+                Margin="120 50 0 0">
+                <Menu
+                    FontFamily="Calibri"
+                    DockPanel.Dock="Top"
+                    HorizontalAlignment="Left"
+                    Background="{StaticResource UIPrimaryColor}">
+                    <MenuItem
+                        Cursor="Hand"
+                        ToolTip="View Network Entities"
+                        Margin="0 0 68 0"
+                        Height="50"
+                        Command="{Binding NavigationCommand}"
+                        CommandParameter="1_Entities"
+                        Padding="0">
+                        <MenuItem.Header>
+                            <Border
+                                Background="{StaticResource ButtonColor}"
+                                CornerRadius="15"
+                                Height="50"
+                                Width="200">
+                                <Border.Clip>
+                                    <RectangleGeometry
+                                        RadiusX="8"
+                                        RadiusY="8"
+                                        Rect="0 0 220 50"/>
+                                </Border.Clip>
+                                <TextBlock
+                                    Foreground="{StaticResource TextColor}"
+                                    FontSize="20"
+                                    FontWeight="Bold"
+                                    Text="Network Entities"
+                                    TextAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"/>
+                            </Border>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem
+                        Cursor="Hand"
+                        ToolTip="View Measurement Graph"
+                        Height="50"
+                        Command="{Binding NavigationCommand}"
+                        CommandParameter="2_Graph"
+                        Padding="0">
+                        <MenuItem.Header>
+                            <Border
+                                Background="{StaticResource ButtonColor}"
+                                CornerRadius="15"
+                                Height="50"
+                                Width="200">
+                                <Border.Clip>
+                                    <RectangleGeometry
+                                        RadiusX="8"
+                                        RadiusY="8"
+                                        Rect="0 0 220 50"/>
+                                </Border.Clip>
+                                <TextBlock
+                                    Foreground="{StaticResource TextColor}"
+                                    FontSize="20"
+                                    FontWeight="Bold"
+                                    Text="Measurement Graph"
+                                    TextAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"/>
+                            </Border>
+                        </MenuItem.Header>
+                    </MenuItem>
+                </Menu>
+            </DockPanel>
+            <Grid Grid.Row="1">
+                <ContentControl Content="{Binding CurrentViewModel}"/>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>

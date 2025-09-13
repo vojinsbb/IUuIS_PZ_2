@@ -4,6 +4,11 @@
              xmlns:local="clr-namespace:NetworkService"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <SolidColorBrush x:Key="UIPrimaryColor" Color="#FF3E3E40"/>
+        <SolidColorBrush x:Key="UISecondaryColor" Color="#FF2D2D30"/>
+        <SolidColorBrush x:Key="ButtonColor" Color="#FF1E1E1E"/>
+        <SolidColorBrush x:Key="TextColor" Color="#FFCCCEDB"/>
+        <SolidColorBrush x:Key="UIWhiteColor" Color="White"/>
+        <SolidColorBrush x:Key="UIErrorColor" Color="#FFB71C1C"/>
     </Application.Resources>
 </Application>

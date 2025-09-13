@@ -14,3 +14,20 @@ D:\!FTN\!HCI VEZBE\2024-25\PZ2\Projekat\MeteringSimulator\MeteringSimulator\obj\
 D:\!FTN\!HCI VEZBE\2024-25\PZ2\Projekat\MeteringSimulator\MeteringSimulator\obj\Debug\MeteringSimulator.csproj.CoreCompileInputs.cache
 D:\!FTN\!HCI VEZBE\2024-25\PZ2\Projekat\MeteringSimulator\MeteringSimulator\obj\Debug\MeteringSimulator.exe
 D:\!FTN\!HCI VEZBE\2024-25\PZ2\Projekat\MeteringSimulator\MeteringSimulator\obj\Debug\MeteringSimulator.pdb
+D:\Downloads\Github\IUuIS_PZ_2\MeteringSimulator\MeteringSimulator\bin\Debug\MeteringSimulator.exe.config
+D:\Downloads\Github\IUuIS_PZ_2\MeteringSimulator\MeteringSimulator\bin\Debug\MeteringSimulator.exe
+D:\Downloads\Github\IUuIS_PZ_2\MeteringSimulator\MeteringSimulator\bin\Debug\MeteringSimulator.pdb
+D:\Downloads\Github\IUuIS_PZ_2\MeteringSimulator\MeteringSimulator\obj\Debug\MeteringSimulator.csproj.AssemblyReference.cache
+D:\Downloads\Github\IUuIS_PZ_2\MeteringSimulator\MeteringSimulator\obj\Debug\MeteringSimulator.exe.config
+D:\Downloads\Github\IUuIS_PZ_2\MeteringSimulator\MeteringSimulator\obj\Debug\MainWindow.g.cs
+D:\Downloads\Github\IUuIS_PZ_2\MeteringSimulator\MeteringSimulator\obj\Debug\App.g.cs
+D:\Downloads\Github\IUuIS_PZ_2\MeteringSimulator\MeteringSimulator\obj\Debug\MeteringSimulator_MarkupCompile.cache
+D:\Downloads\Github\IUuIS_PZ_2\MeteringSimulator\MeteringSimulator\obj\Debug\MeteringSimulator_MarkupCompile.lref
+D:\Downloads\Github\IUuIS_PZ_2\MeteringSimulator\MeteringSimulator\obj\Debug\App.baml
+D:\Downloads\Github\IUuIS_PZ_2\MeteringSimulator\MeteringSimulator\obj\Debug\MainWindow.baml
+D:\Downloads\Github\IUuIS_PZ_2\MeteringSimulator\MeteringSimulator\obj\Debug\MeteringSimulator.g.resources
+D:\Downloads\Github\IUuIS_PZ_2\MeteringSimulator\MeteringSimulator\obj\Debug\MeteringSimulator.Properties.Resources.resources
+D:\Downloads\Github\IUuIS_PZ_2\MeteringSimulator\MeteringSimulator\obj\Debug\MeteringSimulator.csproj.GenerateResource.cache
+D:\Downloads\Github\IUuIS_PZ_2\MeteringSimulator\MeteringSimulator\obj\Debug\MeteringSimulator.csproj.CoreCompileInputs.cache
+D:\Downloads\Github\IUuIS_PZ_2\MeteringSimulator\MeteringSimulator\obj\Debug\MeteringSimulator.exe
+D:\Downloads\Github\IUuIS_PZ_2\MeteringSimulator\MeteringSimulator\obj\Debug\MeteringSimulator.pdb

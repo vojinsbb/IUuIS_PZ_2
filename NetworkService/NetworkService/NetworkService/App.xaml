@@ -10,5 +10,6 @@
         <SolidColorBrush x:Key="TextColor" Color="#FFCCCEDB"/>
         <SolidColorBrush x:Key="UIWhiteColor" Color="White"/>
         <SolidColorBrush x:Key="UIErrorColor" Color="#FFB71C1C"/>
+        <SolidColorBrush x:Key="LineColor" Color="Aqua"/>
     </Application.Resources>
 </Application>

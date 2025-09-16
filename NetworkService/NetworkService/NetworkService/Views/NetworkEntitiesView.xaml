@@ -1,13 +1,411 @@
 ﻿<UserControl x:Class="NetworkService.Views.NetworkEntitiesView"
-               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:NetworkService.Views"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800">
-    
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NetworkService.Views"
+             xmlns:fa5 ="http://schemas.fontawesome.com/icons/"
+             xmlns:fa="clr-namespace:FontAwesome.Sharp;assembly=FontAwesome.Sharp"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="700">
+    <UserControl.Resources>
+        <ControlTemplate
+            x:Key="RoundedButtonTemplate"
+            TargetType="Button">
+            <Border
+                x:Name="buttonBorder"
+                CornerRadius="5"
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}">
+                <ContentPresenter
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger
+                    Property="IsMouseOver"
+                    Value="True">
+                    <Setter
+                        TargetName="buttonBorder"
+                        Property="BorderBrush"
+                        Value="LightBlue"/>
+                </Trigger>
+                <Trigger
+                    Property="IsEnabled"
+                    Value="False">
+                    <Setter
+                        TargetName="buttonBorder"
+                        Property="Background"
+                        Value="Gray"/>
+                    <Setter
+                        Property="Opacity"
+                        Value="0.5"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </UserControl.Resources>
     <Grid>
-
+        <StackPanel
+            Orientation="Vertical">
+            <StackPanel
+                Orientation="Horizontal">
+                <StackPanel
+                    Orientation="Vertical"
+                    Margin="120 20 0 30">
+                    <TextBlock
+                        FontSize="20"
+                        FontWeight="Bold"
+                        Margin="0 5 0 0"
+                        Text="Add new entity:"
+                        Foreground="{StaticResource TextColor}"/>
+                    <StackPanel
+                        Orientation="Horizontal">
+                        <TextBlock
+                            FontSize="20"
+                            VerticalAlignment="Center"
+                            FontWeight="SemiBold"
+                            Foreground="{StaticResource TextColor}"
+                            Margin="0 0 13 0"
+                            Text="Type:"/>
+                        <ComboBox
+                            x:Name="entityTypeComboBox"
+                            ItemsSource="{Binding ComboBoxItems}"
+                            SelectedItem="{Binding CurrentEntityType.Type, Mode=TwoWay}"
+                            Width="120"
+                            Cursor="Hand"
+                            ToolTip="Choose entity type"
+                            Height="30"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Margin="0 0 28 0"/>
+                        <Button
+                            x:Name="addEntityButton"
+                            Cursor="Hand"
+                            ToolTip="Add new entity"
+                            FontWeight="Bold"
+                            FontSize="15"
+                            Foreground="{StaticResource TextColor}"
+                            Background="{StaticResource ButtonColor}"
+                            Width="100"
+                            Height="30">
+                            <StackPanel
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
+                                <!--<fa5:SvgAwesome
+                                    Icon="Solid_Check"
+                                    Height="20"
+                                    Width="20"
+                                    Foreground="{StaticResource TextColor}"/>-->
+                                <TextBlock
+                                    Text="Add"
+                                    VerticalAlignment="Center"
+                                    Margin="5 0 0 0"/>
+                            </StackPanel>
+                            <!-- zaobljenje  buttona -->
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border 
+                                        Background="{TemplateBinding Background}"
+                                        CornerRadius="5"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel
+                Orientation="Horizontal">
+                <StackPanel
+                    Orientation="Vertical"
+                    Margin="120 0 0 30">
+                    <StackPanel 
+                        Orientation="Horizontal" 
+                        VerticalAlignment="Center" 
+                        Margin="0 0 0 5">
+                        <TextBlock 
+                            FontSize="20" 
+                            FontWeight="Bold" 
+                            Foreground="{StaticResource TextColor}" 
+                            VerticalAlignment="Center" 
+                            Text="Search By:"/>
+                        <RadioButton
+                            Margin="34 0 0 -13"
+                            Content="higher" 
+                            x:Name="higherRadioButton"
+                            Foreground="{StaticResource TextColor}"
+                            FontSize="20"
+                            FontWeight="Bold"
+                            VerticalContentAlignment="Center"
+                            IsChecked="False"
+                            IsEnabled="True"/>
+                        <TextBlock 
+                            Text="ID:" 
+                            FontSize="20" 
+                            FontWeight="SemiBold" 
+                            Foreground="{StaticResource TextColor}" 
+                            Margin="15 0 0 0"
+                            VerticalAlignment="Center"/>
+                        <Button 
+                            x:Name="applyButton"
+                            Width="100" 
+                            Height="30" 
+                            FontSize="15"
+                            Background="{StaticResource ButtonColor}" 
+                            Foreground="{StaticResource TextColor}" 
+                            Cursor="Hand" 
+                            ToolTip="Apply filter" 
+                            HorizontalAlignment="Right" 
+                            Margin="140 0 0 0"
+                            Content="Apply"
+                            FontWeight="Bold">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border 
+                                        Background="{TemplateBinding Background}"
+                                        CornerRadius="5"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel 
+                        Orientation="Horizontal" 
+                        VerticalAlignment="Center">
+                        <StackPanel 
+                            Orientation="Vertical">
+                            <ComboBox 
+                                x:Name="searchEntityTypeComboBox" 
+                                ItemsSource="{Binding ComboBoxItems}" 
+                                SelectedItem="{Binding CurrentEntity.Type, Mode=TwoWay}"
+                                Width="120" Height="30" HorizontalContentAlignment="Center" 
+                                VerticalContentAlignment="Center"/>
+                        </StackPanel>
+                        <StackPanel 
+                            Orientation="Vertical" 
+                            VerticalAlignment="Center" 
+                            Margin="10 0 10 0" >
+                            <RadioButton
+                                x:Name="equalRadioButton"
+                                Content="equal" 
+                                Foreground="{StaticResource TextColor}"
+                                FontSize="20"
+                                FontWeight="Bold"
+                                VerticalContentAlignment="Center"
+                                IsChecked="False"
+                                IsEnabled="True"/>
+                            <RadioButton
+                                x:Name="lowerRadioButton"
+                                Content="lower" 
+                                Foreground="{StaticResource TextColor}"
+                                FontSize="20"
+                                FontWeight="Bold"
+                                VerticalContentAlignment="Center"
+                                IsChecked="False"
+                                IsEnabled="True"/>
+                        </StackPanel>
+                        <StackPanel 
+                            Orientation="Vertical" 
+                            VerticalAlignment="Center" 
+                            Margin="13 0 10 18">
+                            <TextBox 
+                                x:Name="idTextBox" 
+                                Width="120" 
+                                Height="30"/>
+                        </StackPanel>
+                        <Button 
+                            x:Name="clearButton"
+                            Width="100" 
+                            Height="30"
+                            FontWeight="Bold"
+                            FontSize="15"
+                            Background="{StaticResource ButtonColor}" 
+                            Foreground="{StaticResource TextColor}" 
+                            Cursor="Hand" 
+                            ToolTip="Clear filters"  
+                            HorizontalAlignment="Right" 
+                            Margin="36 0 0 0"
+                            Content="Clear">
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border 
+                                        Background="{TemplateBinding Background}"
+                                        CornerRadius="5"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel
+                Orientation="Horizontal">
+                <TextBlock
+                    FontSize="20"
+                    FontWeight="Bold"
+                    Foreground="{StaticResource TextColor}"
+                    Margin="120 0 0 30"
+                    Text="Saved filters:"
+                    VerticalAlignment="Center"/>
+                <ComboBox
+                    x:Name="savedFiltersComboBox"
+                    ItemsSource="{Binding SavedFilters}"
+                    SelectedItem="{Binding SelectedFilter, Mode=TwoWay}"
+                    IsEditable="False"
+                    ToolTip="Saved filters"
+                    Margin="15 0 0 25"
+                    VerticalAlignment="Center"
+                    Width="120"
+                    Height="30"/>
+            </StackPanel>
+            <StackPanel
+                Orientation="Vertical">
+                <StackPanel
+                    Orientation="Horizontal">
+                    <TextBlock
+                        FontSize="20"
+                        FontWeight="Bold"
+                        Text="Table of entities:"
+                        Foreground="{StaticResource TextColor}"
+                        Margin="120 0 0 30"/>
+                    <Button
+                        x:Name="deleteButton"
+                        FontSize="15"
+                        FontWeight="Bold"
+                        Foreground="{StaticResource TextColor}"
+                        Content="Delete"
+                        Height="30"
+                        Width="100"
+                        Background="{StaticResource ButtonColor}"
+                        VerticalAlignment="Center"
+                        Margin="15 0 0 25">
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border 
+                                    Background="{TemplateBinding Background}"
+                                    CornerRadius="5"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                </StackPanel>
+                <DataGrid 
+                    x:Name="entitiesDataGrid"
+                    ItemsSource="{Binding EntitiesToShow}"
+                    SelectedItem="{Binding SelectedEntity}"
+                    Background="{StaticResource UIPrimaryColor}"
+                    BorderBrush="Black"
+                    BorderThickness="2"
+                    Margin="40 0 0 0"
+                    IsReadOnly="True"
+                    RowHeight="20"
+                    SelectionMode="Single"
+                    AutoGenerateColumns="False"
+                    CanUserAddRows="False"
+                    CanUserResizeColumns="False"
+                    CanUserReorderColumns="False"
+                    VerticalScrollBarVisibility="Hidden"
+                    ScrollViewer.CanContentScroll="False"
+                    Height="250"
+                    Width="500">
+                    <DataGrid.Resources>
+                        <Style
+                            TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="Background" Value="LightGray"/>
+                            <Setter Property="Height" Value="20"/>
+                            <Setter Property="BorderBrush" Value="Black"/>
+                            <Setter Property="BorderThickness" Value="1.5"/>
+                        </Style>
+                        <Style
+                            TargetType="DataGridCell">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate
+                                        TargetType="DataGridCell">
+                                        <Grid>
+                                            <ContentPresenter
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center"/>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </DataGrid.Resources>
+                    <DataGrid.CellStyle>
+                        <Style 
+                            TargetType="DataGridCell">
+                            <Setter Property="Background" Value="{StaticResource UISecondaryColor}" />
+                            <Setter Property="Foreground" Value="{StaticResource TextColor}" />
+                            <Setter Property="BorderBrush" Value="Black" />
+                            <Setter Property="BorderThickness" Value="1" />
+                            <Style.Triggers>
+                                <Trigger 
+                                    Property="IsSelected" 
+                                    Value="True">
+                                    <Setter Property="Background" Value="LightBlue" />
+                                    <Setter Property="Foreground" Value="Black" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.CellStyle>
+                    <DataGrid.RowStyle>
+                        <Style 
+                            TargetType="DataGridRow">
+                            <Setter Property="Background" Value="{StaticResource UIWhiteColor}" />
+                            <Setter Property="Foreground" Value="Black" />
+                            <Style.Triggers>
+                                <Trigger 
+                                    Property="IsSelected" 
+                                    Value="True">
+                                    <Setter Property="Background" Value="LightBlue" />
+                                    <Setter Property="Foreground" Value="Black" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.RowStyle>
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn 
+                            Width="40">
+                            <DataGridTemplateColumn.Header>
+                                <CheckBox 
+                                    x:Name="selectAllCheckBox"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Checked="selectAllCheckBox_Checked"
+                                    Unchecked="selectAllCheckBox_Unchecked"/>
+                            </DataGridTemplateColumn.Header>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox 
+                                        IsChecked="{Binding IsSelected, Mode=TwoWay}"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"/>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
+                        <DataGridTextColumn Header="Type" Binding="{Binding Type.Type}" Width="*"/>
+                        <DataGridTextColumn Header="Value" Binding="{Binding Value}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </UserControl>

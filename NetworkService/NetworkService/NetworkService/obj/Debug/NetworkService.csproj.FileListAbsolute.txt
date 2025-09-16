@@ -1,30 +1,24 @@
-D:\!FTN\!HCI VEZBE\2023-24\PZ2\Visual Studio\NetworkService\NetworkService\NetworkService\bin\Debug\NetworkService.exe.config
-D:\!FTN\!HCI VEZBE\2023-24\PZ2\Visual Studio\NetworkService\NetworkService\NetworkService\bin\Debug\NetworkService.exe
-D:\!FTN\!HCI VEZBE\2023-24\PZ2\Visual Studio\NetworkService\NetworkService\NetworkService\bin\Debug\NetworkService.pdb
-D:\!FTN\!HCI VEZBE\2023-24\PZ2\Visual Studio\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.csproj.AssemblyReference.cache
-D:\!FTN\!HCI VEZBE\2023-24\PZ2\Visual Studio\NetworkService\NetworkService\NetworkService\obj\Debug\MainWindow.g.cs
-D:\!FTN\!HCI VEZBE\2023-24\PZ2\Visual Studio\NetworkService\NetworkService\NetworkService\obj\Debug\App.g.cs
-D:\!FTN\!HCI VEZBE\2023-24\PZ2\Visual Studio\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService_MarkupCompile.cache
-D:\!FTN\!HCI VEZBE\2023-24\PZ2\Visual Studio\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService_MarkupCompile.lref
-D:\!FTN\!HCI VEZBE\2023-24\PZ2\Visual Studio\NetworkService\NetworkService\NetworkService\obj\Debug\MainWindow.baml
-D:\!FTN\!HCI VEZBE\2023-24\PZ2\Visual Studio\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.g.resources
-D:\!FTN\!HCI VEZBE\2023-24\PZ2\Visual Studio\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.Properties.Resources.resources
-D:\!FTN\!HCI VEZBE\2023-24\PZ2\Visual Studio\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.csproj.GenerateResource.cache
-D:\!FTN\!HCI VEZBE\2023-24\PZ2\Visual Studio\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.csproj.CoreCompileInputs.cache
-D:\!FTN\!HCI VEZBE\2023-24\PZ2\Visual Studio\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.exe
-D:\!FTN\!HCI VEZBE\2023-24\PZ2\Visual Studio\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.pdb
-D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\bin\Debug\NetworkService.exe.config
-D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\bin\Debug\NetworkService.exe
-D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\bin\Debug\NetworkService.pdb
 D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.csproj.AssemblyReference.cache
-D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.exe.config
 D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\MainWindow.g.cs
 D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\Views\MeasurementGraphView.g.cs
 D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\Views\NetworkDisplayView.g.cs
 D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\Views\NetworkEntitiesView.g.cs
 D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\App.g.cs
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService_MarkupCompile.cache
 D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService_MarkupCompile.lref
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\bin\Debug\NetworkService.exe.config
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\bin\Debug\NetworkService.exe
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\bin\Debug\NetworkService.pdb
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\bin\Debug\FontAwesome.Sharp.dll
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\bin\Debug\FontAwesome5.dll
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\bin\Debug\FontAwesome5.Net.dll
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\bin\Debug\Microsoft.Xaml.Behaviors.dll
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\bin\Debug\FontAwesome5.xml
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\bin\Debug\FontAwesome5.Net.xml
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\bin\Debug\Microsoft.Xaml.Behaviors.xml
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\App.baml
 D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\MainWindow.baml
 D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\Views\MeasurementGraphView.baml
 D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\Views\NetworkDisplayView.baml
@@ -33,7 +27,7 @@ D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\
 D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.Properties.Resources.resources
 D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.csproj.GenerateResource.cache
 D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.csproj.CoreCompileInputs.cache
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkS.954836E0.Up2Date
 D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.exe
 D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.pdb
-D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\GeneratedInternalTypeHelper.g.cs
-D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\App.baml
+D:\Downloads\Github\IUuIS_PZ_2\NetworkService\NetworkService\NetworkService\obj\Debug\NetworkService.exe.config

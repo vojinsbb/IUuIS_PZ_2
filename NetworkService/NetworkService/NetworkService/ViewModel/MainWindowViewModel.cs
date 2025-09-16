@@ -2,6 +2,7 @@
 using NetworkService.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
@@ -45,9 +46,9 @@ namespace NetworkService.ViewModel
                 case "1_Entities":
                     CurrentViewModel = networkEntitiesViewModel;
                     break;
-                case "2_Graph":
-                    CurrentViewModel = measurementGraphViewModel;
-                    break;
+                //case "2_Graph":
+                //    CurrentViewModel = measurementGraphViewModel;
+                //    break;
             }
         }
 
@@ -60,9 +61,9 @@ namespace NetworkService.ViewModel
 
             createListener(); //Povezivanje sa serverskom aplikacijom
 
-            networkEntitiesViewModel.Entities.CollectionChanged += this.OnCollectionChanged;
+            //networkEntitiesViewModel.Entities.CollectionChanged += this.OnCollectionChanged;
 
-            networkDisplayViewModel.Entities.CollectionChanged += this.OnCollectionChangedMeasurementGraphViewModel;
+            //networkDisplayViewModel.Entities.CollectionChanged += this.OnCollectionChangedMeasurementGraphViewModel;
         }
 
         #endregion
@@ -105,20 +106,20 @@ namespace NetworkService.ViewModel
             {
                 foreach (Entity newEntity in e.NewItems)
                 {
-                    if (!measurementGraphViewModel.EntitiesInList.Contains(newEntity))
-                    {
-                        measurementGraphViewModel.EntitiesInList.Add(newEntity);
-                    }
+                    //if (!measurementGraphViewModel.EntitiesInList.Contains(newEntity))
+                    //{
+                    //    measurementGraphViewModel.EntitiesInList.Add(newEntity);
+                    //}
                 }
             }
             if (e.OldItems != null)
             {
                 foreach (Entity oldEntity in e.OldItems)
                 {
-                    if (measurementGraphViewModel.EntitiesInList.Contains(oldEntity))
-                    {
-                        measurementGraphViewModel.EntitiesInList.Remove(oldEntity);
-                    }
+                    //if (measurementGraphViewModel.EntitiesInList.Contains(oldEntity))
+                    //{
+                    //    measurementGraphViewModel.EntitiesInList.Remove(oldEntity);
+                    //}
                 }
             }
         }
@@ -154,8 +155,8 @@ namespace NetworkService.ViewModel
                              * duzinu liste koja sadrzi sve objekte pod monitoringom, odnosno
                              * njihov ukupan broj (NE BROJATI OD NULE, VEC POSLATI UKUPAN BROJ)
                              * */
-                            Byte[] data = System.Text.Encoding.ASCII.GetBytes(networkEntitiesViewModel.Entities.Count.ToString());
-                            stream.Write(data, 0, data.Length);
+                            //Byte[] data = System.Text.Encoding.ASCII.GetBytes(networkEntitiesViewModel.Entities.Count.ToString());
+                            //stream.Write(data, 0, data.Length);
 
                             if(File.Exists("Log.txt"))
                             {
@@ -174,21 +175,21 @@ namespace NetworkService.ViewModel
                             //################ IMPLEMENTACIJA ####################
                             // Obraditi poruku kako bi se dobile informacije o izmeni
                             // Azuriranje potrebnih stvari u aplikaciji
-                            if(NetworkEntitiesViewModel.Entities.Count > 0)
-                            {
-                                var splited = incomming.Split(':');
-                                DateTime dt = DateTime.Now;
-                                using (StreamWriter sw = File.AppendText("Log.txt"))
-                                {
-                                    sw.WriteLine(dt + "; " + splited[0] + ", " + splited[1]);
-                                }
+                            //if(networkEntitiesViewModel.Entities.Count > 0)
+                            //{
+                            //    var splited = incomming.Split(':');
+                            //    DateTime dt = DateTime.Now;
+                            //    using (StreamWriter sw = File.AppendText("Log.txt"))
+                            //    {
+                            //        sw.WriteLine(dt + "; " + splited[0] + ", " + splited[1]);
+                            //    }
 
-                                int id = Int32.Parse(splited[0].Split('_')[1]);
-                                networkEntitiesViewModel.Entities[id].Value = float.Parse(splited[1]);
+                            //    int id = Int32.Parse(splited[0].Split('_')[1]);
+                            //    networkEntitiesViewModel.Entities[id].Value = float.Parse(splited[1]);
 
-                                networkDisplayViewModel.UpdateEntityOnCanvas(networkEntitiesViewModel.Entities[id]);
-                                measurementGraphViewModel.AutoShow();
-                            }
+                            //    networkDisplayViewModel.UpdateEntityOnCanvas(networkEntitiesViewModel.Entities[id]);
+                            //    measurementGraphViewModel.AutoShow();
+                            //}
                         }
                     }, null);
                 }

@@ -35,19 +35,22 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <TextBlock
-            Foreground="{StaticResource TextColor}"
-            Text="Network Display"
-            FontWeight="Bold"
-            FontSize="24"
-            FontFamily="Calibri"
-            HorizontalAlignment="Center"
-            Margin="0 66 0 10"/>
-        <ContentControl
-            Grid.Row="1"
-            Content="{Binding AlwaysOnViewModel}"/>
+        <StackPanel>
+            <TextBlock
+                Grid.Row="0"
+                Grid.Column="0"
+                Foreground="{StaticResource TextColor}"
+                Text="Network Display"
+                FontWeight="Bold"
+                FontSize="24"
+                FontFamily="Calibri"
+                HorizontalAlignment="Center"
+                Margin="0 66 0 10"/>
+            <ContentControl
+                Grid.Row="1"
+                Content="{Binding AlwaysOnViewModel}"/>
+        </StackPanel>
 
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
@@ -61,7 +64,7 @@
                     FontFamily="Calibri"
                     DockPanel.Dock="Top"
                     HorizontalAlignment="Left"
-                    Background="{StaticResource UIPrimaryColor}">
+                    Background="{StaticResource UISecondaryColor}">
                     <MenuItem
                         Cursor="Hand"
                         ToolTip="View Network Entities"

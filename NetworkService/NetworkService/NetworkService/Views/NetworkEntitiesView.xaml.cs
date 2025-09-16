@@ -24,5 +24,35 @@ namespace NetworkService.Views
         {
             InitializeComponent();
         }
+
+        private void addEntityButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void applyButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void clearButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void deleteButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void selectAllCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void selectAllCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -256,7 +256,10 @@
                                 Text="{Binding IdTextBox, UpdateSourceTrigger=PropertyChanged}"
                                 x:Name="idTextBox" 
                                 Width="120" 
-                                Height="30"/>
+                                Height="30"
+                                FontSize="15"
+                                HorizontalContentAlignment="Center"
+                                VerticalContentAlignment="Center"/>
                         </StackPanel>
                         <StackPanel
                             Orientation="Vertical">

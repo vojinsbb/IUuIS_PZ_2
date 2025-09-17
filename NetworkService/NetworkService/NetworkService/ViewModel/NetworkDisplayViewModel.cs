@@ -15,6 +15,8 @@ namespace NetworkService.ViewModel
     {
         #region Initialization
 
+        public NetworkDisplayViewModel _networkDisplayViewModel { get; set; }
+
         public BindingList<Entity> EntitiesInList { get; set; }
         public ObservableCollection<Brush> BorderBrushCollection { get; set; }
         public ObservableCollection<Canvas> CanvasCollection { get; set; }
@@ -51,7 +53,7 @@ namespace NetworkService.ViewModel
         private Point linePoint1 = new Point();
         private Point linePoint2 = new Point();
 
-        public NetworkDisplayViewModel()
+        public NetworkDisplayViewModel(MainWindowViewModel mainWindow)
         {
             EntitiesInList = new BindingList<Entity>();
             LineCollection = new ObservableCollection<MyLine>();
@@ -80,6 +82,35 @@ namespace NetworkService.ViewModel
             RightMouseButtonDownOnCanvas = new ClassICommand<object>(OnRightMouseButtonDown);
             OrganizeAllCommand = new ClassICommand(OnOrganize);
         }
+
+        public NetworkDisplayViewModel()
+        {
+            EntitiesInList = new BindingList<Entity>();
+            LineCollection = new ObservableCollection<MyLine>();
+            CanvasCollection = new ObservableCollection<Canvas>();
+            BorderBrushCollection = new ObservableCollection<Brush>();
+            DescriptionCollection = new ObservableCollection<string>();
+
+            for (int i = 0; i < 12; i++)
+            {
+                BorderBrushCollection.Add(new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1E1F22")));
+                CanvasCollection.Add(new Canvas()
+                {
+                    Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#949BA4")),
+                    AllowDrop = true
+                });
+                DescriptionCollection.Add(" ");
+            }
+
+            DropEntityOnCanvas = new ClassICommand<object>(OnDrop);
+            LeftMouseButtonDownOnCanvas = new ClassICommand<object>(OnLeftMouseButtonDown);
+            MouseLeftButtonUp = new ClassICommand(OnMouseLeftButtonUp);
+            SelectionChanged = new ClassICommand<object>(OnSelectionChanged);
+            FreeCanvas = new ClassICommand<object>(OnFreeCanvas);
+            RightMouseButtonDownOnCanvas = new ClassICommand<object>(OnRightMouseButtonDown);
+            OrganizeAllCommand = new ClassICommand(OnOrganize);
+        }
+
         #endregion
 
         #region GetCanvasIndexForEntity

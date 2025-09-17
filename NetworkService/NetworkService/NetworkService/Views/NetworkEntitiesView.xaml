@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:NetworkService.Views"
              xmlns:fa5 ="http://schemas.fontawesome.com/icons/"
              xmlns:fa="clr-namespace:FontAwesome.Sharp;assembly=FontAwesome.Sharp"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="700">
     <UserControl.Resources>
@@ -70,17 +71,31 @@
                             Text="Type:"/>
                         <ComboBox
                             x:Name="entityTypeComboBox"
-                            ItemsSource="{Binding ComboBoxItems}"
-                            SelectedItem="{Binding CurrentEntityType.Type, Mode=TwoWay}"
+                            ItemsSource="{Binding Types}"
+                            SelectedItem="{Binding SelectedItemAdd}"
                             Width="120"
+                            IsEditable="False"
+                            IsTextSearchCaseSensitive="False"
+                            IsTextSearchEnabled="True"
                             Cursor="Hand"
                             ToolTip="Choose entity type"
                             Height="30"
                             HorizontalContentAlignment="Center"
                             VerticalContentAlignment="Center"
-                            Margin="0 0 28 0"/>
+                            Margin="0 0 28 0">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock
+                                        Text="{Binding}"
+                                        Cursor="Hand"
+                                        FontWeight="Bold"
+                                        FontSize="15"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
                         <Button
                             x:Name="addEntityButton"
+                            Command="{Binding AddCommand}"
                             Cursor="Hand"
                             ToolTip="Add new entity"
                             FontWeight="Bold"
@@ -138,12 +153,13 @@
                             Margin="34 0 0 -13"
                             Content="higher" 
                             x:Name="higherRadioButton"
+                            GroupName="Filter"
+                            ToolTip="Select more"
                             Foreground="{StaticResource TextColor}"
                             FontSize="20"
                             FontWeight="Bold"
                             VerticalContentAlignment="Center"
-                            IsChecked="False"
-                            IsEnabled="True"/>
+                            IsChecked="{Binding IsHigherChecked, Mode=TwoWay}"/>
                         <TextBlock 
                             Text="ID:" 
                             FontSize="20" 
@@ -153,6 +169,7 @@
                             VerticalAlignment="Center"/>
                         <Button 
                             x:Name="applyButton"
+                            Command="{Binding ApplyCommand}"
                             Width="100" 
                             Height="30" 
                             FontSize="15"
@@ -184,68 +201,118 @@
                             Orientation="Vertical">
                             <ComboBox 
                                 x:Name="searchEntityTypeComboBox" 
-                                ItemsSource="{Binding ComboBoxItems}" 
-                                SelectedItem="{Binding CurrentEntity.Type, Mode=TwoWay}"
-                                Width="120" Height="30" HorizontalContentAlignment="Center" 
-                                VerticalContentAlignment="Center"/>
+                                ItemsSource="{Binding FilterOptions}" 
+                                SelectedItem="{Binding SelectedTypeFilter}"
+                                IsTextSearchCaseSensitive="False"
+                                IsTextSearchEnabled="True"
+                                IsEditable="False"
+                                Width="120" 
+                                Height="30" 
+                                HorizontalContentAlignment="Center" 
+                                VerticalContentAlignment="Center">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock 
+                                           Text="{Binding}"
+                                           Cursor="Hand"
+                                           FontWeight="Bold"
+                                           FontSize="15" />
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
                         </StackPanel>
                         <StackPanel 
                             Orientation="Vertical" 
                             VerticalAlignment="Center" 
-                            Margin="10 0 10 0" >
+                            Margin="10 0 10 20" >
                             <RadioButton
                                 x:Name="equalRadioButton"
-                                Content="equal" 
+                                Content="equal"
+                                GroupName="Filter"
+                                ToolTip="Select equal"
                                 Foreground="{StaticResource TextColor}"
                                 FontSize="20"
                                 FontWeight="Bold"
                                 VerticalContentAlignment="Center"
-                                IsChecked="False"
-                                IsEnabled="True"/>
+                                IsChecked="{Binding IsEqualChecked, Mode=TwoWay}"/>
                             <RadioButton
                                 x:Name="lowerRadioButton"
                                 Content="lower" 
+                                GroupName="Filter"
+                                ToolTip="Select lower"
                                 Foreground="{StaticResource TextColor}"
                                 FontSize="20"
                                 FontWeight="Bold"
                                 VerticalContentAlignment="Center"
-                                IsChecked="False"
-                                IsEnabled="True"/>
+                                IsChecked="{Binding IsLowerChecked, Mode=TwoWay}"/>
                         </StackPanel>
                         <StackPanel 
                             Orientation="Vertical" 
                             VerticalAlignment="Center" 
-                            Margin="13 0 10 18">
-                            <TextBox 
+                            Margin="13 0 10 40">
+                            <TextBox
+                                PreviewTextInput="idTextBox_PreviewTextInput"
+                                FontWeight="Bold"
+                                Text="{Binding IdTextBox, UpdateSourceTrigger=PropertyChanged}"
                                 x:Name="idTextBox" 
                                 Width="120" 
                                 Height="30"/>
                         </StackPanel>
-                        <Button 
-                            x:Name="clearButton"
-                            Width="100" 
-                            Height="30"
-                            FontWeight="Bold"
-                            FontSize="15"
-                            Background="{StaticResource ButtonColor}" 
-                            Foreground="{StaticResource TextColor}" 
-                            Cursor="Hand" 
-                            ToolTip="Clear filters"  
-                            HorizontalAlignment="Right" 
-                            Margin="36 0 0 0"
-                            Content="Clear">
-                            <Button.Template>
-                                <ControlTemplate TargetType="Button">
-                                    <Border 
-                                        Background="{TemplateBinding Background}"
-                                        CornerRadius="5"
-                                        BorderBrush="{TemplateBinding BorderBrush}"
-                                        BorderThickness="{TemplateBinding BorderThickness}">
-                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
+                        <StackPanel
+                            Orientation="Vertical">
+                            <Button 
+                                x:Name="clearButton"
+                                Command="{Binding ClearCommand}"
+                                Width="100" 
+                                Height="30"
+                                FontWeight="Bold"
+                                FontSize="15"
+                                Background="{StaticResource ButtonColor}" 
+                                Foreground="{StaticResource TextColor}" 
+                                Cursor="Hand" 
+                                ToolTip="Clear filters"  
+                                HorizontalAlignment="Right" 
+                                Margin="36 5 0 0"
+                                Content="Clear">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border 
+                                            Background="{TemplateBinding Background}"
+                                            CornerRadius="5"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                            <Button 
+                                x:Name="saveButton"
+                                Command="{Binding SaveCommand}"
+                                Width="100" 
+                                Height="30"
+                                FontWeight="Bold"
+                                FontSize="15"
+                                Background="{StaticResource ButtonColor}" 
+                                Foreground="{StaticResource TextColor}" 
+                                Cursor="Hand" 
+                                ToolTip="Save filters"  
+                                HorizontalAlignment="Right" 
+                                Margin="36 10 0 0"
+                                Content="Save">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border 
+                                            Background="{TemplateBinding Background}"
+                                            CornerRadius="5"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                            </Button>
+                        </StackPanel>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
@@ -260,14 +327,31 @@
                     VerticalAlignment="Center"/>
                 <ComboBox
                     x:Name="savedFiltersComboBox"
-                    ItemsSource="{Binding SavedFilters}"
-                    SelectedItem="{Binding SelectedFilter, Mode=TwoWay}"
+                    ItemsSource="{Binding FilterNames}"
+                    SelectedItem="{Binding SelectedFilterText}"
+                    IsTextSearchCaseSensitive="False"
+                    IsTextSearchEnabled="True"
                     IsEditable="False"
                     ToolTip="Saved filters"
                     Margin="15 0 0 25"
                     VerticalAlignment="Center"
                     Width="120"
-                    Height="30"/>
+                    Height="30">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock 
+                               Text="{Binding}"
+                               Cursor="Hand"
+                               FontWeight="Bold"
+                               FontSize="15" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding ComboBoxSelectionChangedCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
             </StackPanel>
             <StackPanel
                 Orientation="Vertical">
@@ -281,6 +365,7 @@
                         Margin="120 0 0 30"/>
                     <Button
                         x:Name="deleteButton"
+                        Command="{Binding DeleteCommand}"
                         FontSize="15"
                         FontWeight="Bold"
                         Foreground="{StaticResource TextColor}"
@@ -305,7 +390,7 @@
                 </StackPanel>
                 <DataGrid 
                     x:Name="entitiesDataGrid"
-                    ItemsSource="{Binding EntitiesToShow}"
+                    ItemsSource="{Binding FilterValues}"
                     SelectedItem="{Binding SelectedEntity}"
                     Background="{StaticResource UIPrimaryColor}"
                     BorderBrush="Black"
@@ -318,7 +403,9 @@
                     CanUserAddRows="False"
                     CanUserResizeColumns="False"
                     CanUserReorderColumns="False"
-                    VerticalScrollBarVisibility="Hidden"
+                    CanUserResizeRows="False"
+                    VerticalScrollBarVisibility="Auto"
+                    HorizontalScrollBarVisibility="Auto"
                     ScrollViewer.CanContentScroll="False"
                     Height="250"
                     Width="500">
@@ -380,25 +467,6 @@
                         </Style>
                     </DataGrid.RowStyle>
                     <DataGrid.Columns>
-                        <DataGridTemplateColumn 
-                            Width="40">
-                            <DataGridTemplateColumn.Header>
-                                <CheckBox 
-                                    x:Name="selectAllCheckBox"
-                                    HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
-                                    Checked="selectAllCheckBox_Checked"
-                                    Unchecked="selectAllCheckBox_Unchecked"/>
-                            </DataGridTemplateColumn.Header>
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <CheckBox 
-                                        IsChecked="{Binding IsSelected, Mode=TwoWay}"
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"/>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
                         <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="*"/>
                         <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
                         <DataGridTextColumn Header="Type" Binding="{Binding Type.Type}" Width="*"/>

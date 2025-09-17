@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NetworkService.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,12 @@ namespace NetworkService
     /// </summary>
     public partial class MainWindow : Window
     {
+        public MainWindowViewModel _mainWindowViewModel;
         public MainWindow()
         {
             InitializeComponent();
+            _mainWindowViewModel = new MainWindowViewModel(this);
+            DataContext = _mainWindowViewModel;
         }
     }
 }

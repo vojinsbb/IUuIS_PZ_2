@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NetworkService.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,12 @@ namespace NetworkService.Views
     /// </summary>
     public partial class MeasurementGraphView : UserControl
     {
+        public MeasurementGraphViewModel _measurementGraphViewModel;
         public MeasurementGraphView()
         {
             InitializeComponent();
+            _measurementGraphViewModel = new MeasurementGraphViewModel();
+            DataContext = _measurementGraphViewModel;
         }
     }
 }

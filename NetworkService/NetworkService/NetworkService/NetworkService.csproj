@@ -72,6 +72,7 @@
     <Compile Include="ClassINotifyPropertyChanged.cs" />
     <Compile Include="Model\Entity.cs" />
     <Compile Include="Model\EntityType.cs" />
+    <Compile Include="Model\Filter.cs" />
     <Compile Include="Model\MyLine.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\MeasurementGraphViewModel.cs" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NetworkService.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,39 +21,31 @@ namespace NetworkService.Views
     /// </summary>
     public partial class NetworkEntitiesView : UserControl
     {
-        public NetworkEntitiesView()
+        public NetworkEntitiesViewModel _networkEntitiesViewModel;
+        public NetworkEntitiesView(NetworkDisplayViewModel networkDisplayViewModel)
         {
             InitializeComponent();
+            _networkEntitiesViewModel = new NetworkEntitiesViewModel(networkDisplayViewModel);
+            DataContext = _networkEntitiesViewModel;
         }
 
-        private void addEntityButton_Click(object sender, RoutedEventArgs e)
+        public NetworkEntitiesView() // parameterless constructor for designer
         {
+            InitializeComponent();
 
+            if (!System.ComponentModel.DesignerProperties.GetIsInDesignMode(this))
+                return;
+
+            _networkEntitiesViewModel = new NetworkEntitiesViewModel(null);
+            DataContext = _networkEntitiesViewModel;
         }
 
-        private void applyButton_Click(object sender, RoutedEventArgs e)
+        private void idTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-
-        }
-
-        private void clearButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void deleteButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void selectAllCheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void selectAllCheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-
+            if (!char.IsDigit(e.Text, e.Text.Length - 1))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

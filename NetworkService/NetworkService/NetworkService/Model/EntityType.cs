@@ -6,12 +6,19 @@ using System.Threading.Tasks;
 
 namespace NetworkService.Model
 {
+    public enum EntityTypes
+    {
+        Solar_Panel,
+        Wind_Generator, 
+        All
+    }
+
     public class EntityType : ClassINotifyPropertyChanged
     {
-        private string type;
+        private EntityTypes type;
         private string imageSource = "";
 
-        public string Type
+        public EntityTypes Type
         {
             get { return type; }
             set 

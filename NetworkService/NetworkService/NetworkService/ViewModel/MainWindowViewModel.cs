@@ -1,5 +1,6 @@
 ﻿using NetworkService;
 using NetworkService.Model;
+using NetworkService.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -20,8 +21,12 @@ namespace NetworkService.ViewModel
 
         public ClassICommand<string> NavigationCommand { get; private set; }
 
-        private NetworkEntitiesViewModel networkEntitiesViewModel = new NetworkEntitiesViewModel();
-        private NetworkDisplayViewModel networkDisplayViewModel = new NetworkDisplayViewModel();
+        public NetworkDisplayView networkDisplayView;
+        public NetworkEntitiesView networkEntitiesView;
+        public MeasurementGraphView measurementGraphView;
+        public NetworkDisplayViewModel networkDisplayViewModel;
+        public NetworkEntitiesViewModel networkEntitiesViewModel;
+
         private MeasurementGraphViewModel measurementGraphViewModel = new MeasurementGraphViewModel();
 
         private ClassINotifyPropertyChanged currentViewModel;
@@ -43,27 +48,45 @@ namespace NetworkService.ViewModel
         {
             switch (destination)
             {
-                case "1_Entities":
-                    CurrentViewModel = networkEntitiesViewModel;
-                    break;
+                //case "1_Entities":
+                //    CurrentViewModel = networkEntitiesViewModel;
+                //    break;
                 //case "2_Graph":
                 //    CurrentViewModel = measurementGraphViewModel;
                 //    break;
             }
         }
 
-        public MainWindowViewModel()
+        public MainWindowViewModel(MainWindow mainWindow)
         {
             NavigationCommand = new ClassICommand<string>(OnNavigation);
+
+            networkDisplayViewModel = new NetworkDisplayViewModel(); 
+            networkEntitiesViewModel = new NetworkEntitiesViewModel(networkDisplayViewModel);
+
+            networkDisplayView = new NetworkDisplayView { DataContext = networkDisplayViewModel };
+            networkEntitiesView = new NetworkEntitiesView();
 
             CurrentViewModel = networkEntitiesViewModel;
             AlwaysOnViewModel = networkDisplayViewModel;
 
             createListener(); //Povezivanje sa serverskom aplikacijom
 
-            //networkEntitiesViewModel.Entities.CollectionChanged += this.OnCollectionChanged;
+            networkEntitiesViewModel.Entities.CollectionChanged += this.OnCollectionChanged;
 
             //networkDisplayViewModel.Entities.CollectionChanged += this.OnCollectionChangedMeasurementGraphViewModel;
+        }
+
+        public MainWindowViewModel()
+        {
+            NavigationCommand = new ClassICommand<string>(OnNavigation);
+
+            networkDisplayViewModel = new NetworkDisplayViewModel(this);
+            networkDisplayView = new NetworkDisplayView(this);
+            networkEntitiesViewModel = new NetworkEntitiesViewModel(networkDisplayViewModel);
+
+            CurrentViewModel = networkEntitiesViewModel;
+            AlwaysOnViewModel = networkDisplayViewModel;
         }
 
         #endregion
@@ -155,10 +178,10 @@ namespace NetworkService.ViewModel
                              * duzinu liste koja sadrzi sve objekte pod monitoringom, odnosno
                              * njihov ukupan broj (NE BROJATI OD NULE, VEC POSLATI UKUPAN BROJ)
                              * */
-                            //Byte[] data = System.Text.Encoding.ASCII.GetBytes(networkEntitiesViewModel.Entities.Count.ToString());
-                            //stream.Write(data, 0, data.Length);
+                            Byte[] data = System.Text.Encoding.ASCII.GetBytes(networkEntitiesViewModel.Entities.Count.ToString());
+                            stream.Write(data, 0, data.Length);
 
-                            if(File.Exists("Log.txt"))
+                            if (File.Exists("Log.txt"))
                             {
                                 File.WriteAllText("Log.txt", String.Empty);
                             }
@@ -175,21 +198,21 @@ namespace NetworkService.ViewModel
                             //################ IMPLEMENTACIJA ####################
                             // Obraditi poruku kako bi se dobile informacije o izmeni
                             // Azuriranje potrebnih stvari u aplikaciji
-                            //if(networkEntitiesViewModel.Entities.Count > 0)
-                            //{
-                            //    var splited = incomming.Split(':');
-                            //    DateTime dt = DateTime.Now;
-                            //    using (StreamWriter sw = File.AppendText("Log.txt"))
-                            //    {
-                            //        sw.WriteLine(dt + "; " + splited[0] + ", " + splited[1]);
-                            //    }
+                            if (networkEntitiesViewModel.Entities.Count > 0)
+                            {
+                                var splited = incomming.Split(':');
+                                DateTime dt = DateTime.Now;
+                                using (StreamWriter sw = File.AppendText("Log.txt"))
+                                {
+                                    sw.WriteLine(dt + "; " + splited[0] + ", " + splited[1]);
+                                }
 
-                            //    int id = Int32.Parse(splited[0].Split('_')[1]);
-                            //    networkEntitiesViewModel.Entities[id].Value = float.Parse(splited[1]);
+                                int id = Int32.Parse(splited[0].Split('_')[1]);
+                                networkEntitiesViewModel.Entities[id].Value = float.Parse(splited[1]);
 
-                            //    networkDisplayViewModel.UpdateEntityOnCanvas(networkEntitiesViewModel.Entities[id]);
-                            //    measurementGraphViewModel.AutoShow();
-                            //}
+                                networkDisplayViewModel.UpdateEntityOnCanvas(networkEntitiesViewModel.Entities[id]);
+                                //measurementGraphViewModel.AutoShow();
+                            }
                         }
                     }, null);
                 }

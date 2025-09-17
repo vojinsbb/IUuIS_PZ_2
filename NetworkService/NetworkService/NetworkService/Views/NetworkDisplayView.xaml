@@ -71,7 +71,7 @@
                         <ListView.Resources>
                             <CollectionViewSource 
                                 x:Key="groupedEntities"
-                                Source="{Binding EntitiesList}">
+                                Source="{Binding EntitiesInList}">
                                 <CollectionViewSource.GroupDescriptions>
                                     <PropertyGroupDescription PropertyName="Type.Type"/>
                                 </CollectionViewSource.GroupDescriptions>
@@ -104,13 +104,6 @@
                                         Foreground="{StaticResource TextColor}"/>
                                     <TextBlock
                                         Text=" "/>
-                                    <TextBlock
-                                        Text="{Binding Type.Type}"
-                                        Foreground="{StaticResource TextColor}"/>
-                                    <TextBlock Text=" "/>
-                                    <TextBlock
-                                        Text="{Binding Value}"
-                                        Foreground="{StaticResource TextColor}"/>
                                 </StackPanel>
                             </DataTemplate>
                         </ListView.ItemTemplate>
@@ -365,7 +358,7 @@
                                 HorizontalAlignment="Left"
                                 Margin="2 483 0 0"/>
                             <TextBlock
-                                Margin="2 510 0 0"
+                                Margin="2 507 0 0"
                                 Text="{Binding DescriptionCollection[9]}"
                                 FontSize="12"
                                 Foreground="{StaticResource TextColor}"/>
@@ -586,7 +579,7 @@
                             HorizontalAlignment="Left"
                             Margin="2 483 0 0"/>
                             <TextBlock
-                                Margin="2 510 0 0"
+                                Margin="2 507 0 0"
                                 Text="{Binding DescriptionCollection[10]}"
                                 FontSize="12"
                                 Foreground="{StaticResource TextColor}"/>
@@ -807,7 +800,7 @@
                                 HorizontalAlignment="Left"
                                 Margin="2 483 0 0"/>
                             <TextBlock
-                                Margin="2 510 0 0"
+                                Margin="2 507 0 0"
                                 Text="{Binding DescriptionCollection[11]}"
                                 FontSize="12"
                                 Foreground="{StaticResource TextColor}"/>

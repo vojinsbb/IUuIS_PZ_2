@@ -12,6 +12,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace NetworkService.ViewModel
 {
@@ -209,6 +210,19 @@ namespace NetworkService.ViewModel
 
                                 int id = Int32.Parse(splited[0].Split('_')[1]);
                                 networkEntitiesViewModel.Entities[id].Value = float.Parse(splited[1]);
+                                Application.Current.Dispatcher.Invoke(() =>
+                                {
+                                    networkEntitiesViewModel.FilterValues.Clear();
+                                    foreach (var e in networkEntitiesViewModel.Entities)
+                                    {
+                                        if (networkEntitiesViewModel.TempFilter?.FilterEntity(e) ?? true)
+                                        {
+                                            networkEntitiesViewModel.FilterValues.Add(e);
+                                        }
+                                    }
+
+                                    networkDisplayViewModel.UpdateEntityOnCanvas(networkEntitiesViewModel.Entities[id]);
+                                });
 
                                 networkDisplayViewModel.UpdateEntityOnCanvas(networkEntitiesViewModel.Entities[id]);
                                 //measurementGraphViewModel.AutoShow();

@@ -565,7 +565,10 @@ namespace NetworkService.ViewModel
 
         private void ResetEntity()
         {
+            TempFilter = null;// Obrise trenutno aktivan filter
             ResetFilterForm();
+
+            // Napuni FilterValues svim entitetima
             FilterValues.Clear();
             foreach (Entity en in Entities)
             {

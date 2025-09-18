@@ -27,8 +27,8 @@ namespace NetworkService.ViewModel
         public MeasurementGraphView measurementGraphView;
         public NetworkDisplayViewModel networkDisplayViewModel;
         public NetworkEntitiesViewModel networkEntitiesViewModel;
+        public MeasurementGraphViewModel measurementGraphViewModel;
 
-        private MeasurementGraphViewModel measurementGraphViewModel = new MeasurementGraphViewModel();
 
         private ClassINotifyPropertyChanged currentViewModel;
         private ClassINotifyPropertyChanged alwaysOnViewModel;
@@ -49,12 +49,18 @@ namespace NetworkService.ViewModel
         {
             switch (destination)
             {
-                //case "1_Entities":
-                //    CurrentViewModel = networkEntitiesViewModel;
-                //    break;
-                //case "2_Graph":
-                //    CurrentViewModel = measurementGraphViewModel;
-                //    break;
+                case "1_Entities":
+                    CurrentViewModel = networkEntitiesViewModel;
+                    break;
+                case "2_Graph":
+                    CurrentViewModel = measurementGraphViewModel;
+
+                    // sigurnosna inicijalizacija pre nego sto se graf prikaze
+                    if (measurementGraphViewModel.SelectedEntity == null && measurementGraphViewModel.AllEntities.Count > 0)
+                    {
+                        measurementGraphViewModel.SelectedEntity = measurementGraphViewModel.ComboBoxItems[0];
+                    }
+                    break;
             }
         }
 
@@ -64,9 +70,12 @@ namespace NetworkService.ViewModel
 
             networkDisplayViewModel = new NetworkDisplayViewModel(); 
             networkEntitiesViewModel = new NetworkEntitiesViewModel(networkDisplayViewModel);
+            measurementGraphViewModel = new MeasurementGraphViewModel(networkEntitiesViewModel);
 
             networkDisplayView = new NetworkDisplayView { DataContext = networkDisplayViewModel };
             networkEntitiesView = new NetworkEntitiesView();
+            measurementGraphView = new MeasurementGraphView(measurementGraphViewModel);
+
 
             CurrentViewModel = networkEntitiesViewModel;
             AlwaysOnViewModel = networkDisplayViewModel;
@@ -75,6 +84,7 @@ namespace NetworkService.ViewModel
 
             networkEntitiesViewModel.Entities.CollectionChanged += this.OnCollectionChanged;
 
+            networkEntitiesViewModel.Entities.CollectionChanged += OnCollectionChangedMeasurementGraphViewModel;
             //networkDisplayViewModel.Entities.CollectionChanged += this.OnCollectionChangedMeasurementGraphViewModel;
         }
 
@@ -85,6 +95,7 @@ namespace NetworkService.ViewModel
             networkDisplayViewModel = new NetworkDisplayViewModel(this);
             networkDisplayView = new NetworkDisplayView(this);
             networkEntitiesViewModel = new NetworkEntitiesViewModel(networkDisplayViewModel);
+            measurementGraphViewModel = new MeasurementGraphViewModel(networkEntitiesViewModel);
 
             CurrentViewModel = networkEntitiesViewModel;
             AlwaysOnViewModel = networkDisplayViewModel;
@@ -130,21 +141,29 @@ namespace NetworkService.ViewModel
             {
                 foreach (Entity newEntity in e.NewItems)
                 {
-                    //if (!measurementGraphViewModel.EntitiesInList.Contains(newEntity))
-                    //{
-                    //    measurementGraphViewModel.EntitiesInList.Add(newEntity);
-                    //}
+                    if (!measurementGraphViewModel.AllEntities.Contains(newEntity))
+                    {
+                        measurementGraphViewModel.AllEntities.Add(newEntity);
+                    }
                 }
             }
             if (e.OldItems != null)
             {
                 foreach (Entity oldEntity in e.OldItems)
                 {
-                    //if (measurementGraphViewModel.EntitiesInList.Contains(oldEntity))
-                    //{
-                    //    measurementGraphViewModel.EntitiesInList.Remove(oldEntity);
-                    //}
+                    if (measurementGraphViewModel.AllEntities.Contains(oldEntity))
+                    {
+                        measurementGraphViewModel.AllEntities.Remove(oldEntity);
+                    }
                 }
+            }
+            if (measurementGraphViewModel.AllEntities.Count == 1)
+            {
+                measurementGraphViewModel.ComboBoxItems.Clear();
+                foreach (var en in measurementGraphViewModel.AllEntities)
+                    measurementGraphViewModel.ComboBoxItems.Add($"{en.Name}: {en.Id}");
+
+                measurementGraphViewModel.SelectedEntity = measurementGraphViewModel.ComboBoxItems[0];
             }
         }
         #endregion
@@ -225,7 +244,7 @@ namespace NetworkService.ViewModel
                                 });
 
                                 networkDisplayViewModel.UpdateEntityOnCanvas(networkEntitiesViewModel.Entities[id]);
-                                //measurementGraphViewModel.AutoShow();
+                                measurementGraphViewModel.UpdateGraph();
                             }
                         }
                     }, null);

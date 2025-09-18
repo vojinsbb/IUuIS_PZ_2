@@ -8,7 +8,7 @@
              xmlns:fa="clr-namespace:FontAwesome.Sharp;assembly=FontAwesome.Sharp"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              mc:Ignorable="d" 
-             d:DesignHeight="700" d:DesignWidth="700">
+             Height="700" Width="700">
     <UserControl.Resources>
         <ControlTemplate
             x:Key="RoundedButtonTemplate"

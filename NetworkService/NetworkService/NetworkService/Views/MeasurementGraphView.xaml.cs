@@ -21,12 +21,14 @@ namespace NetworkService.Views
     /// </summary>
     public partial class MeasurementGraphView : UserControl
     {
-        public MeasurementGraphViewModel _measurementGraphViewModel;
+        public MeasurementGraphView(MeasurementGraphViewModel measurementGraphViewModel)
+        {
+            InitializeComponent();
+            DataContext = measurementGraphViewModel;
+        }
         public MeasurementGraphView()
         {
             InitializeComponent();
-            _measurementGraphViewModel = new MeasurementGraphViewModel();
-            DataContext = _measurementGraphViewModel;
         }
     }
 }

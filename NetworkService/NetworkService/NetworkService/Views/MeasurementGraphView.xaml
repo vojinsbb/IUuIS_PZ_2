@@ -4,10 +4,101 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:NetworkService.Views"
+      xmlns:conv="clr-namespace:NetworkService"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800">
-
+      Height="700" Width="700">
+    <UserControl.Resources>
+        <conv:HeightToTopConverter x:Key="HeightToTopConverter" CanvasHeight="500"/>
+    </UserControl.Resources>
     <Grid>
-        
+        <StackPanel
+            Orientation="Vertical">
+            <StackPanel
+                Orientation="Horizontal"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Margin="130 20 130 20">
+                <TextBlock
+                    Foreground="{StaticResource TextColor}"
+                    Text="Entity:"
+                    VerticalAlignment="Center"
+                    FontSize="20"
+                    FontWeight="Bold"
+                    Margin="0 0 20 0"/>
+                <ComboBox
+                    Width="200"
+                    Height="30"
+                    ToolTip="Choose entity"
+                    Cursor="Hand"
+                    FontWeight="Bold"
+                    FontSize="15"
+                    ItemsSource="{Binding AllEntities}"
+                    SelectedItem="{Binding SelectedEntityObject, Mode=TwoWay}"
+                    DisplayMemberPath="Name"
+                    IsTextSearchCaseSensitive="False"
+                    IsTextSearchEnabled="True"
+                    IsEditable="False"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center">
+                </ComboBox>
+            </StackPanel>
+            <Canvas
+                Focusable="False" 
+                Background="{StaticResource UIPrimaryColor}"
+                Height="500"
+                VerticalAlignment="Top"
+                Margin="10 0 10 0">
+                <Line X1="0" Y1="500" X2="600" Y2="500" Margin="45 0 0 0" Stroke="Black" StrokeThickness="2" Focusable="False"/>
+                <Line X1="0" Y1="444" X2="600" Y2="444" Margin="45 0 0 0" Stroke="Black" StrokeThickness="2" Focusable="False"/>
+                <Line X1="0" Y1="389" X2="600" Y2="389" Margin="45 0 0 0" Stroke="Black" StrokeThickness="2" Focusable="False"/>
+                <Line X1="0" Y1="333" X2="600" Y2="333" Margin="45 0 0 0" Stroke="Black" StrokeThickness="2" Focusable="False"/>
+                <Line X1="0" Y1="278" X2="600" Y2="278" Margin="45 0 0 0" Stroke="Black" StrokeThickness="2" Focusable="False"/>
+                <Line X1="0" Y1="222" X2="600" Y2="222" Margin="45 0 0 0" Stroke="Black" StrokeThickness="2" Focusable="False"/>
+                <Line X1="0" Y1="167" X2="600" Y2="167" Margin="45 0 0 0" Stroke="Black" StrokeThickness="2" Focusable="False"/>
+                <Line X1="0" Y1="111" X2="600" Y2="111" Margin="45 0 0 0" Stroke="Black" StrokeThickness="2" Focusable="False"/>
+                <Line X1="0" Y1="56" X2="600" Y2="56" Margin="45 0 0 0" Stroke="Black" StrokeThickness="2" Focusable="False"/>
+                <Line X1="0" Y1="0" X2="600" Y2="0" Margin="45 0 0 0" Stroke="Black" StrokeThickness="2" Focusable="False"/>
+
+                <Label Name="timeLabel1" Content="{Binding TimeLabel1}" FontSize="12" Focusable="False" HorizontalAlignment="Left" Canvas.Left="45" Canvas.Top="510"
+                        VerticalAlignment="Top" Foreground="{StaticResource TextColor}" FontWeight="Bold" Width="120" Height="30" VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center"/>
+                <Label Name="timeLabel2" Content="{Binding TimeLabel2}" FontSize="12" Focusable="False" HorizontalAlignment="Left" Canvas.Left="165" Canvas.Top="510"
+                        VerticalAlignment="Top" Foreground="{StaticResource TextColor}" FontWeight="Bold" Width="120" Height="30" VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center"/>
+                <Label Name="timeLabel3" Content="{Binding TimeLabel3}" FontSize="12" Focusable="False" HorizontalAlignment="Left" Canvas.Left="285" Canvas.Top="510"
+                        VerticalAlignment="Top" Foreground="{StaticResource TextColor}" FontWeight="Bold" Width="120" Height="30" VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center"/>
+                <Label Name="timeLabel4" Content="{Binding TimeLabel4}" FontSize="12" Focusable="False" HorizontalAlignment="Left" Canvas.Left="405" Canvas.Top="510"
+                        VerticalAlignment="Top" Foreground="{StaticResource TextColor}" FontWeight="Bold" Width="120" Height="30" VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center"/>
+                <Label Name="timeLabel5" Content="{Binding TimeLabel5}" FontSize="12" Focusable="False" HorizontalAlignment="Left" Canvas.Left="525" Canvas.Top="510"
+                        VerticalAlignment="Top" Foreground="{StaticResource TextColor}" FontWeight="Bold" Width="120" Height="30" VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center"/>
+
+                <Label Content="0MW" FontSize="14" FontWeight="Bold" Foreground="{StaticResource TextColor}" HorizontalAlignment="Left" Canvas.Top="475" VerticalAlignment="Top"/>
+                <Label Content="1MW" FontSize="14" FontWeight="Bold" Foreground="{StaticResource TextColor}" HorizontalAlignment="Left" Canvas.Top="420" VerticalAlignment="Top"/>
+                <Label Content="2MW" FontSize="14" FontWeight="Bold" Foreground="{StaticResource TextColor}" HorizontalAlignment="Left" Canvas.Top="365" VerticalAlignment="Top"/>
+                <Label Content="3MW" FontSize="14" FontWeight="Bold" Foreground="{StaticResource TextColor}" HorizontalAlignment="Left" Canvas.Top="310" VerticalAlignment="Top"/>
+                <Label Content="4MW" FontSize="14" FontWeight="Bold" Foreground="{StaticResource TextColor}" HorizontalAlignment="Left" Canvas.Top="255" VerticalAlignment="Top"/>
+                <Label Content="5MW" FontSize="14" FontWeight="Bold" Foreground="{StaticResource TextColor}" HorizontalAlignment="Left" Canvas.Top="200" VerticalAlignment="Top"/>
+                <Label Content="6MW" FontSize="14" FontWeight="Bold" Foreground="{StaticResource TextColor}" HorizontalAlignment="Left" Canvas.Top="145" VerticalAlignment="Top"/>
+                <Label Content="7MW" FontSize="14" FontWeight="Bold" Foreground="{StaticResource TextColor}" HorizontalAlignment="Left" Canvas.Top="90" VerticalAlignment="Top"/>
+                <Label Content="8MW" FontSize="14" FontWeight="Bold" Foreground="{StaticResource TextColor}" HorizontalAlignment="Left" Canvas.Top="35" VerticalAlignment="Top"/>
+                <Label Content="9MW" FontSize="14" FontWeight="Bold" Foreground="{StaticResource TextColor}" HorizontalAlignment="Left" Canvas.Top="-5" VerticalAlignment="Top"/>
+
+                <Rectangle Width="50" Height="{Binding Height1}" Fill="{Binding BlockColor1h}"
+                        Canvas.Left="75" Canvas.Top="{Binding Height1, Converter={StaticResource HeightToTopConverter}}"/>
+
+                <Rectangle Width="50" Height="{Binding Height2}" Fill="{Binding BlockColor2h}"
+                        Canvas.Left="195" Canvas.Top="{Binding Height2, Converter={StaticResource HeightToTopConverter}}"/>
+                <Rectangle Width="50" Height="{Binding Height3}" Fill="{Binding BlockColor3h}"
+                        Canvas.Left="315" Canvas.Top="{Binding Height3, Converter={StaticResource HeightToTopConverter}}"/>
+                <Rectangle Width="50" Height="{Binding Height4}" Fill="{Binding BlockColor4h}"
+                        Canvas.Left="435" Canvas.Top="{Binding Height4, Converter={StaticResource HeightToTopConverter}}"/>
+                <Rectangle Width="50" Height="{Binding Height5}" Fill="{Binding BlockColor5h}"
+                    Canvas.Left="555" Canvas.Top="{Binding Height5, Converter={StaticResource HeightToTopConverter}}"/>
+
+            </Canvas>
+        </StackPanel>
     </Grid>
 </UserControl>

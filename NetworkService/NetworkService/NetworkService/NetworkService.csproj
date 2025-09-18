@@ -70,6 +70,7 @@
     </ApplicationDefinition>
     <Compile Include="ClassICommand.cs" />
     <Compile Include="ClassINotifyPropertyChanged.cs" />
+    <Compile Include="HeightToTopConverter.cs" />
     <Compile Include="Model\Entity.cs" />
     <Compile Include="Model\EntityType.cs" />
     <Compile Include="Model\Filter.cs" />

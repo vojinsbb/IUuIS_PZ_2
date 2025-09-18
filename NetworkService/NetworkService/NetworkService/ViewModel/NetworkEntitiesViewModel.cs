@@ -114,7 +114,7 @@ namespace NetworkService.ViewModel
             }
         }
 
-        public ObservableCollection<Entity> Entities { get; set; }
+        public ObservableCollection<Entity> Entities { get; set; } = new ObservableCollection<Entity>();
         public Entity SelectedEntityForDelete
         {
             get { return _selectedEntityForDelete; }
@@ -303,6 +303,9 @@ namespace NetworkService.ViewModel
         }
 
         #endregion
+
+
+        #region Functions
 
         private bool CanAdd()
         {
@@ -613,5 +616,7 @@ namespace NetworkService.ViewModel
                 }
             }
         }
+
+        #endregion
     }
 }

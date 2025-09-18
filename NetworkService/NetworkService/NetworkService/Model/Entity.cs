@@ -14,6 +14,9 @@ namespace NetworkService.Model
         private EntityType type;
         private float value;
 
+        public List<float> ValueHistory { get; set; } = new List<float>();
+        public List<string> TimelineValues { get; set; } = new List<string>();
+
         public Entity(int id, string name, EntityTypes entityTypeEnum, float value)
         {
             this.id = id;
@@ -103,6 +106,20 @@ namespace NetworkService.Model
             }
 
             return retVal;
+        }
+
+        public void AddValue(float newValue)
+        {
+            ValueHistory.Add(newValue);
+            TimelineValues.Add(DateTime.Now.ToString());
+
+            if (ValueHistory.Count > 5)
+            {
+                ValueHistory.RemoveAt(0);
+                TimelineValues.RemoveAt(0);
+            }
+
+            Value = newValue;
         }
     }
 }

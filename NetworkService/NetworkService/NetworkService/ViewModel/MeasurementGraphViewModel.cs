@@ -21,9 +21,11 @@ namespace NetworkService.ViewModel
 
         public MeasurementGraphViewModel(NetworkEntitiesViewModel networkEntitiesViewModel)
         {
-            AllEntities = new ObservableCollection<Entity>();
             _networkEntitiesViewModel = networkEntitiesViewModel;
+
+            AllEntities = new ObservableCollection<Entity>();
             AllEntities = _networkEntitiesViewModel.Entities;
+            
             AllEntities.CollectionChanged += AllEntities_CollectionChanged;
 
             ComboBoxItems = new ObservableCollection<string>(AllEntities.Select(e => $"{e.Name}: {e.Id}"));
@@ -64,11 +66,11 @@ namespace NetworkService.ViewModel
             }
 
             // Ako nema izabranog entiteta, izaberi prvi
-            if (string.IsNullOrEmpty(SelectedEntity) && ComboBoxItems.Count > 0)
-            {
-                SelectedEntity = ComboBoxItems[0];
-                UpdateGraph();
-            }
+            //if (string.IsNullOrEmpty(SelectedEntity) && ComboBoxItems.Count > 0)
+            //{
+            //    SelectedEntity = ComboBoxItems[0];
+            //    UpdateGraph();
+            //}
         }
 
         public ObservableCollection<Entity> AllEntities { get; set; }
@@ -179,55 +181,55 @@ namespace NetworkService.ViewModel
             }
         }
 
-        private string selectedEntity;
+        //private string selectedEntity;
 
-        public string SelectedEntity
-        {
-            get { return selectedEntity; }
-            set
-            {
-                if (selectedEntity != value)
-                {
-                    selectedEntity = value;
-                    OnPropertyChanged("SelectedEntity");
+        //public string SelectedEntity
+        //{
+        //    get { return selectedEntity; }
+        //    set
+        //    {
+        //        if (selectedEntity != value)
+        //        {
+        //            selectedEntity = value;
+        //            OnPropertyChanged("SelectedEntity");
 
-                    if (!string.IsNullOrEmpty(selectedEntity) && AllEntities != null && AllEntities.Count > 0)
-                        UpdateGraph();
-                }
-            }
-        }
+        //            if (!string.IsNullOrEmpty(selectedEntity) && AllEntities != null && AllEntities.Count > 0)
+        //                UpdateGraph();
+        //        }
+        //    }
+        //}
 
         private Entity _selectedEntityObject;
         public Entity SelectedEntityObject
         {
-            get { return _selectedEntityObject; }
+            get => _selectedEntityObject;
             set
             {
                 if (_selectedEntityObject != value)
                 {
                     _selectedEntityObject = value;
-                    OnPropertyChanged("SelectedEntityObject");
+                    OnPropertyChanged(nameof(SelectedEntityObject));
                     if (_selectedEntityObject != null)
                         UpdateGraph(_selectedEntityObject);
                 }
             }
         }
 
-        public void UpdateGraph()
-        {
-            if (SelectedEntity == null) return;
+        //public void UpdateGraph()
+        //{
+        //    if (SelectedEntity == null) return;
 
-            string[] parts = SelectedEntity.Split(':');
-            if (parts.Length < 2) return;
+        //    string[] parts = SelectedEntity.Split(':');
+        //    if (parts.Length < 2) return;
 
-            string idStr = parts[1].Trim().Split(' ')[0];
-            if (!int.TryParse(idStr, out int id)) return;
+        //    string idStr = parts[1].Trim().Split(' ')[0];
+        //    if (!int.TryParse(idStr, out int id)) return;
 
-            var en = AllEntities.FirstOrDefault(e => e.Id == id);
-            if (en == null) return;
+        //    var en = AllEntities.FirstOrDefault(e => e.Id == id);
+        //    if (en == null) return;
 
-            UpdateGraph(en);
-        }
+        //    UpdateGraph(en);
+        //}
 
         public void UpdateGraph(Entity en)
         {

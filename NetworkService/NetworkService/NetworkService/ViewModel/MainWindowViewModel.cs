@@ -56,10 +56,10 @@ namespace NetworkService.ViewModel
                     CurrentViewModel = measurementGraphViewModel;
 
                     // sigurnosna inicijalizacija pre nego sto se graf prikaze
-                    if (measurementGraphViewModel.SelectedEntity == null && measurementGraphViewModel.AllEntities.Count > 0)
-                    {
-                        measurementGraphViewModel.SelectedEntity = measurementGraphViewModel.ComboBoxItems[0];
-                    }
+                    if (measurementGraphViewModel.SelectedEntityObject == null && measurementGraphViewModel.AllEntities.Count > 0)
+    {
+        measurementGraphViewModel.SelectedEntityObject = measurementGraphViewModel.AllEntities[0];
+    }
                     break;
             }
         }
@@ -157,13 +157,17 @@ namespace NetworkService.ViewModel
                     }
                 }
             }
+            //if (measurementGraphViewModel.AllEntities.Count == 1)
+            //{
+            //    measurementGraphViewModel.ComboBoxItems.Clear();
+            //    foreach (var en in measurementGraphViewModel.AllEntities)
+            //        measurementGraphViewModel.ComboBoxItems.Add($"{en.Name}: {en.Id}");
+
+            //    measurementGraphViewModel.SelectedEntity = measurementGraphViewModel.ComboBoxItems[0];
+            //}
             if (measurementGraphViewModel.AllEntities.Count == 1)
             {
-                measurementGraphViewModel.ComboBoxItems.Clear();
-                foreach (var en in measurementGraphViewModel.AllEntities)
-                    measurementGraphViewModel.ComboBoxItems.Add($"{en.Name}: {en.Id}");
-
-                measurementGraphViewModel.SelectedEntity = measurementGraphViewModel.ComboBoxItems[0];
+                measurementGraphViewModel.SelectedEntityObject = measurementGraphViewModel.AllEntities[0];
             }
         }
         #endregion
@@ -228,23 +232,32 @@ namespace NetworkService.ViewModel
                                 }
 
                                 int id = Int32.Parse(splited[0].Split('_')[1]);
-                                networkEntitiesViewModel.Entities[id].Value = float.Parse(splited[1]);
+
                                 Application.Current.Dispatcher.Invoke(() =>
                                 {
-                                    networkEntitiesViewModel.FilterValues.Clear();
-                                    foreach (var e in networkEntitiesViewModel.Entities)
+                                    var entity = networkEntitiesViewModel.Entities.FirstOrDefault(e => e.Id == id);
+                                    if (entity != null)
                                     {
-                                        if (networkEntitiesViewModel.TempFilter?.FilterEntity(e) ?? true)
+                                        entity.AddValue(float.Parse(splited[1]));
+
+                                        networkEntitiesViewModel.FilterValues.Clear();
+                                        foreach (var e in networkEntitiesViewModel.Entities)
                                         {
-                                            networkEntitiesViewModel.FilterValues.Add(e);
+                                            if (networkEntitiesViewModel.TempFilter?.FilterEntity(e) ?? true)
+                                            {
+                                                networkEntitiesViewModel.FilterValues.Add(e);
+                                            }
+                                        }
+
+                                        networkDisplayViewModel.UpdateEntityOnCanvas(entity);
+                                        //measurementGraphViewModel.UpdateGraph();
+
+                                        if (measurementGraphViewModel.SelectedEntityObject != null && measurementGraphViewModel.SelectedEntityObject.Id == entity.Id)
+                                        {
+                                            measurementGraphViewModel.UpdateGraph(entity);
                                         }
                                     }
-
-                                    networkDisplayViewModel.UpdateEntityOnCanvas(networkEntitiesViewModel.Entities[id]);
                                 });
-
-                                networkDisplayViewModel.UpdateEntityOnCanvas(networkEntitiesViewModel.Entities[id]);
-                                measurementGraphViewModel.UpdateGraph();
                             }
                         }
                     }, null);

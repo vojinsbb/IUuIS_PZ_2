@@ -73,7 +73,7 @@
                             x:Name="entityTypeComboBox"
                             ItemsSource="{Binding Types}"
                             SelectedItem="{Binding SelectedItemAdd}"
-                            Width="120"
+                            Width="150"
                             IsEditable="False"
                             IsTextSearchCaseSensitive="False"
                             IsTextSearchEnabled="True"

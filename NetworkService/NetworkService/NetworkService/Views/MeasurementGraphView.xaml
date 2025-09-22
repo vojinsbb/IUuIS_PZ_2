@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:NetworkService.Views"
       xmlns:conv="clr-namespace:NetworkService"
       mc:Ignorable="d" 
-      Height="700" Width="700">
+      Height="700" Width="700"
+             FontFamily="Calibri">
     <UserControl.Resources>
         <conv:HeightToTopConverter x:Key="HeightToTopConverter" CanvasHeight="500"/>
     </UserControl.Resources>

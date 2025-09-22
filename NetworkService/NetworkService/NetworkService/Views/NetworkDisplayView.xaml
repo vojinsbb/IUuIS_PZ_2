@@ -125,6 +125,8 @@
                     ToolTip="Arrange all entities"
                     Background="{StaticResource ButtonColor}"
                     BorderBrush="Black"
+                    FontWeight="Bold"
+                    FontSize="15"
                     Template="{StaticResource RoundedButtonTemplate}"
                     Foreground="{StaticResource TextColor}"
                     HorizontalAlignment="Left"

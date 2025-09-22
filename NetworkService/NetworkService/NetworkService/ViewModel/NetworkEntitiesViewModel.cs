@@ -261,6 +261,7 @@ namespace NetworkService.ViewModel
 
         public NetworkEntitiesViewModel()
         {
+
             Entities = new ObservableCollection<Entity>();
 
             FilterOptions = new List<string> { "All", "Solar_Panel", "Wind_Generator" };

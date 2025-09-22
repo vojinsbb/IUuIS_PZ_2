@@ -249,11 +249,11 @@ namespace NetworkService.ViewModel
             Height4 = (LastFiveValues[3] / maxMW) * maxCanvasHeight;
             Height5 = (LastFiveValues[4] / maxMW) * maxCanvasHeight;
 
-            BlockColor1h = (LastFiveValues[0] < 1 || LastFiveValues[0] > 5) ? Brushes.Red : Brushes.DarkGreen;
-            BlockColor2h = (LastFiveValues[1] < 1 || LastFiveValues[1] > 5) ? Brushes.Red : Brushes.DarkGreen;
-            BlockColor3h = (LastFiveValues[2] < 1 || LastFiveValues[2] > 5) ? Brushes.Red : Brushes.DarkGreen;
-            BlockColor4h = (LastFiveValues[3] < 1 || LastFiveValues[3] > 5) ? Brushes.Red : Brushes.DarkGreen;
-            BlockColor5h = (LastFiveValues[4] < 1 || LastFiveValues[4] > 5) ? Brushes.Red : Brushes.DarkGreen;
+            BlockColor1h = (LastFiveValues[0] < 1 || LastFiveValues[0] > 5) ? Brushes.DarkRed : Brushes.DarkGreen;
+            BlockColor2h = (LastFiveValues[1] < 1 || LastFiveValues[1] > 5) ? Brushes.DarkRed : Brushes.DarkGreen;
+            BlockColor3h = (LastFiveValues[2] < 1 || LastFiveValues[2] > 5) ? Brushes.DarkRed : Brushes.DarkGreen;
+            BlockColor4h = (LastFiveValues[3] < 1 || LastFiveValues[3] > 5) ? Brushes.DarkRed : Brushes.DarkGreen;
+            BlockColor5h = (LastFiveValues[4] < 1 || LastFiveValues[4] > 5) ? Brushes.DarkRed : Brushes.DarkGreen;
 
             TimeLabel1 = LastFiveDateTime[0] != DateTime.MinValue.ToString() ? LastFiveDateTime[0] : "";
             TimeLabel2 = LastFiveDateTime[1] != DateTime.MinValue.ToString() ? LastFiveDateTime[1] : "";

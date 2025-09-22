@@ -345,6 +345,7 @@ namespace NetworkService.ViewModel
 
                 DeleteEntityFromCanvas(SelectedEntity);
                 FilterValues.Remove(SelectedEntity);
+                MessageBox.Show("Successfully deleted entity.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -413,6 +414,7 @@ namespace NetworkService.ViewModel
                 Count = Entities.Count;
                 _idSolarPanel++;
                 _id++;
+                MessageBox.Show("Successfully added new entity.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else if (type.Equals("Wind_Generator"))
             {
@@ -437,6 +439,7 @@ namespace NetworkService.ViewModel
                 Count = Entities.Count;
                 _idWindGenerator++;
                 _id++;
+                MessageBox.Show("Successfully added new entity.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -544,6 +547,8 @@ namespace NetworkService.ViewModel
                     Filters[filter.GetName()] = filter;
                     FilterNames.Add(filter.GetName());
                     SelectedFilterText = filter.GetName();
+
+                    MessageBox.Show("Filter successfully saved.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {

@@ -3,7 +3,3 @@
 *.vsidx
 *.user
 *.suo
-
-# Build output
-bin/
-obj/
